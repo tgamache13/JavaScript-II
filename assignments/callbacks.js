@@ -27,6 +27,7 @@ const items = ['Pencil', 'Notebook', 'yo-yo', 'Gum'];
 
   const test1 = firstItem(items, item => `I love my ${item}!`);
   console.log(test1); // "I love my Pencil!"
+  
 
   // TEST 2 (declaring callback before hand):
 
@@ -38,28 +39,64 @@ const items = ['Pencil', 'Notebook', 'yo-yo', 'Gum'];
   console.log(test2); // "this Pencil is worth a million dollars!"
 */
 
-
-function getLength(arr, cb) {
-  // getLength passes the length of the array into the callback.
+const numberArray = [1,3,5,7,9];
+function showLength(list, cb){
+  cb(list.length);
 }
+
+showLength(numberArray,(lengthOfList) => {
+  console.log(lengthOfList);
+});
+  
+
+
 
 function last(arr, cb) {
+  cb(arr[4]);
   // last passes the last item of the array into the callback.
 }
+last(numberArray, (lastItem) => {
+  console.log(lastItem);
+});
+
+
 
 function sumNums(x, y, cb) {
+  return cb(x, y);
   // sumNums adds two numbers (x, y) and passes the result to the callback.
 }
+const add = (x, y) => {
+  return x + y;
+}
+console.log(sumNums(1,2,add));
+
+
 
 function multiplyNums(x, y, cb) {
+  return cb(x,y);
   // multiplyNums multiplies two numbers and passes the result to the callback.
 }
+const multiply = (x,y) => {
+  return x * y;
+}
+console.log(multiplyNums(2,4,multiply));
+
+
 
 function contains(item, list, cb) {
+  return cb(item, list);
   // contains checks if an item is present inside of the given array/list.
   // Pass true to the callback if it is, otherwise pass false.
 }
+const check = numberArray.filter(function(item){
+  if(item.numberArray === item){
+    return "true";
+  } else {
+    return "false";
+  };
+});
 
+console.log(contains(2));
 /* STRETCH PROBLEM */
 
 function removeDuplicates(array, cb) {
