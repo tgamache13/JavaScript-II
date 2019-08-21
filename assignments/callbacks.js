@@ -83,20 +83,20 @@ console.log(multiplyNums(2,4,multiply));
 
 
 
-function contains(item, list, cb) {
-  return cb(item, list);
+
+function contains(value, cb) {
+  return cb(value);
   // contains checks if an item is present inside of the given array/list.
   // Pass true to the callback if it is, otherwise pass false.
 }
-const check = numberArray.filter(function(item){
-  if(item.numberArray === item){
-    return "true";
-  } else {
-    return "false";
-  };
-});
-
-console.log(contains(2));
+function inArray(array,value){
+  for ( var i = 0; i < numberArray.length; i++) {
+  if(numberArray[i] === value)
+    return "True";
+  }
+  return false;
+}
+console.log(contains(2,inArray));
 /* STRETCH PROBLEM */
 
 function removeDuplicates(array, cb) {
