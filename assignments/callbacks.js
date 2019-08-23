@@ -39,12 +39,12 @@ const items = ['Pencil', 'Notebook', 'yo-yo', 'Gum'];
   console.log(test2); // "this Pencil is worth a million dollars!"
 */
 
-const numberArray = [1,3,5,7,9];
+// const numberArray = [1,3,5,7,9];
 function showLength(list, cb){
   cb(list.length);
 }
 
-showLength(numberArray,(lengthOfList) => {
+showLength(items, lengthOfList => {
   console.log(lengthOfList);
 });
   
@@ -52,10 +52,10 @@ showLength(numberArray,(lengthOfList) => {
 
 
 function last(arr, cb) {
-  cb(arr[4]);
+  cb(arr[arr.length - 1]);
   // last passes the last item of the array into the callback.
 }
-last(numberArray, (lastItem) => {
+last(items, lastItem => {
   console.log(lastItem);
 });
 
@@ -84,19 +84,21 @@ console.log(multiplyNums(2,4,multiply));
 
 
 
-function contains(value, cb) {
-  return cb(value);
+function contains(value,arr, cb) {
+  return cb(arr, value);
   // contains checks if an item is present inside of the given array/list.
   // Pass true to the callback if it is, otherwise pass false.
 }
-function inArray(array,value){
-  for ( var i = 0; i < numberArray.length; i++) {
-  if(numberArray[i] === value)
-    return "True";
+function inArray(arr,value){
+  for ( let i = 0; i < arr.length; i++) {
+  if(arr[i] === value){
+     return true;
+    } else{
+      return false;
+    }
   }
-  return false;
 }
-console.log(contains(2,inArray));
+console.log(contains('banana', items, inArray));
 /* STRETCH PROBLEM */
 
 function removeDuplicates(array, cb) {

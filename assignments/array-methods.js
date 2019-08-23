@@ -57,12 +57,15 @@ const runners = [
 
 // ==== Challenge 1: Use .forEach() ====
 // The event director needs both the first and last names of each runner for their running bibs. Combine both the first and last names and populate a new array called `fullNames`. This array will contain just strings.
-let fullNames = runners.forEach(function(currentValue, index, array){
-  console.log(currentValue.first_name +" "+ currentValue.last_name);
+let fullNames = []
+
+runners.forEach(function(currentValue, index, array){
+  fullNames.push(currentValue.first_name +" "+ currentValue.last_name)
 });
 
-
 console.log(fullNames);
+
+
 
 // ==== Challenge 2: Use .map() ====
 // The event director needs to have all the runners' first names in uppercase because the director BECAME DRUNK WITH POWER. Populate an array called `firstNamesAllCaps`. This array will contain just strings.
@@ -86,14 +89,37 @@ let ticketPriceTotal = runners.reduce(function(accumulator, item){
   return accumulator + item.donation;
 }, 0);
 console.log(ticketPriceTotal);
-
+ 
 // ==== Challenge 5: Be Creative ====
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
 // Problem 1
-//The event director wants to thank each company for having a runner in the race. We need a list of runners full names and their company.
+//Need a list of everyones email and what they donated.
+let emailList = []
 
+runners.forEach(function(currentValue, index, array){
+  emailList.push(currentValue.email +" "+ currentValue.donation)
+});
+
+console.log(emailList);
 
 // Problem 2
+//Show the medium shirts are needed
+let medShirt = runners.filter(function(item){
+  
+  if(item.shirt_size === 'M'){
+    return item;
+  }
+
+});
+console.log(JSON.stringify(medShirt));
 
 // Problem 3
+//list donations over 200
+let donationTwoHun = runners.filter(function(item){
+
+  if (item.donation > 200){
+    return item;
+  }
+});
+console.log(JSON.stringify(donationTwoHun));
