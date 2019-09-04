@@ -27,6 +27,7 @@ const items = ['Pencil', 'Notebook', 'yo-yo', 'Gum'];
 
   const test1 = firstItem(items, item => `I love my ${item}!`);
   console.log(test1); // "I love my Pencil!"
+  
 
   // TEST 2 (declaring callback before hand):
 
@@ -38,28 +39,66 @@ const items = ['Pencil', 'Notebook', 'yo-yo', 'Gum'];
   console.log(test2); // "this Pencil is worth a million dollars!"
 */
 
-
-function getLength(arr, cb) {
-  // getLength passes the length of the array into the callback.
+// const numberArray = [1,3,5,7,9];
+function showLength(list, cb){
+  cb(list.length);
 }
+
+showLength(items, lengthOfList => {
+  console.log(lengthOfList);
+});
+  
+
+
 
 function last(arr, cb) {
+  cb(arr[arr.length - 1]);
   // last passes the last item of the array into the callback.
 }
+last(items, lastItem => {
+  console.log(lastItem);
+});
+
+
 
 function sumNums(x, y, cb) {
+  return cb(x, y);
   // sumNums adds two numbers (x, y) and passes the result to the callback.
 }
+const add = (x, y) => {
+  return x + y;
+}
+console.log(sumNums(1,2,add));
+
+
 
 function multiplyNums(x, y, cb) {
+  return cb(x,y);
   // multiplyNums multiplies two numbers and passes the result to the callback.
 }
+const multiply = (x,y) => {
+  return x * y;
+}
+console.log(multiplyNums(2,4,multiply));
 
-function contains(item, list, cb) {
+
+
+
+function contains(value,arr, cb) {
+  return cb(arr, value);
   // contains checks if an item is present inside of the given array/list.
   // Pass true to the callback if it is, otherwise pass false.
 }
-
+function inArray(arr,value){
+  for ( let i = 0; i < arr.length; i++) {
+  if(arr[i] === value){
+     return true;
+    } else{
+      return false;
+    }
+  }
+}
+console.log(contains('banana', items, inArray));
 /* STRETCH PROBLEM */
 
 function removeDuplicates(array, cb) {
